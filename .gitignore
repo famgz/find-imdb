@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 .trash
 
+=======
+>>>>>>> a3e9e5b4c314a02eceae1a2f7dedbe8057183994
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
