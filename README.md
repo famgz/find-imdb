@@ -7,5 +7,5 @@ Usage
 ```python
 from find_imdb import finder
 
-imdbID = finder([director1, director2], title1, title2)
+imdbID = finder([director1, director2, ...], title1, title2)
 ```
