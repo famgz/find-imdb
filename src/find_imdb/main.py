@@ -20,11 +20,6 @@ def normalize_strings(names):
         return first_names
 
 
-def test(directors, data=None, *titles):
-
-    return
-
-
 @timeit
 def main(title_eng=None, original_title=None, directors=None, data:dict=None):
 
