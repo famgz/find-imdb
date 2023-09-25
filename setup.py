@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 with open('requirements.txt') as f:
-    REQUIREMENTS = f.readlines()
+    REQUIREMENTS = [x.strip() for x in f.readlines() if x.strip()]
 
 setup(
     name='find_imdb',
