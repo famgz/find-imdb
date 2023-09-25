@@ -1,4 +1,4 @@
-git+https://github.com/famgz/famgz_utils.git@main
+famgz_utils @ git+https://github.com/famgz/famgz_utils.git@main
 cinemagoer
 rich
 Unidecode
