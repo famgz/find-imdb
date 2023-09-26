@@ -1,4 +1,4 @@
-# find_imdb
+# find-imdb
 Find a film's IMDb Id from its title and director.
 
 Installation
