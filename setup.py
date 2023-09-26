@@ -4,7 +4,7 @@ with open('requirements.txt') as f:
     REQUIREMENTS = [x.strip() for x in f.readlines() if x.strip()]
 
 setup(
-    name='find_imdb',
+    name='find-imdb',
     version='0.1',
     license='MIT',
     author="famgz",

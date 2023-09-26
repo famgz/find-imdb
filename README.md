@@ -4,7 +4,7 @@ Find a film's IMDb Id from its title and director.
 Installation
 -----
 ```
-pip install git+https://github.com/famgz/find_imdb.git
+pip install git+https://github.com/famgz/find-imdb.git
 ```
 
 Usage
