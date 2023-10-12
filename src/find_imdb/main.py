@@ -1,3 +1,4 @@
+from difflib import SequenceMatcher
 from urllib.error import HTTPError
 from imdb import Cinemagoer as IMDb
 from time import sleep
@@ -5,8 +6,14 @@ from rich import print
 from famgz_utils import clean_name, timeit
 
 TRIES = 1
-INTERVAL = 0  # + random()
+INTERVAL = 0.1
 SEARCH_TOLERANCE = 5
+SIMILARITY_THRESHOLD = 0.9
+
+
+def is_similar_string(a, b):
+    similarity = SequenceMatcher(None, a, b).ratio()
+    return similarity >= SIMILARITY_TRESHOLD
 
 
 def normalize_strings(names):
@@ -120,7 +127,3 @@ def finder(title_eng=None, original_title=None, directors=None, data=None):
         except Exception as e:
             print(f'[find_imdb] Got Error:[yellow] {e} ')
     return None
-
-
-if __name__ == '__main__':
-    ...
