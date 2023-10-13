@@ -13,7 +13,7 @@ DIRECTORS_SEARCH_TOLERANCE = 2
 MOVIES_SEARCH_TOLERANCE = 5
 SIMILARITY_THRESHOLD = 0.9
 allowed_chars = ascii_lowercase + digits + ' '
-removed_title_words = ['the', 'that']
+title_words_to_remove = ['the', 'that']
 
 
 def dprint(*x):
@@ -40,7 +40,7 @@ def clean_string(s):
 
 def clean_title(s):
     s = clean_string(s)
-    return ' '.join([x for x in s.split() if x not in removed_title_words])
+    return ' '.join([x for x in s.split() if x not in title_words_to_remove])
 
 
 def clean_names(names):
@@ -63,9 +63,8 @@ def main(*titles, directors=None, data: dict = None):
                 filmography = person.get('filmography', {}).get('director')  # it only returns display titles
                 if filmography:
                     for f in filmography:
-                        dprint('film=', f)
                         film = clean_title(str(f))
-                        dprint('cleaned film=', film)
+                        dprint('film=', f, f'({film})')
                         if film in cleaned_titles:  # match title
                             ID = f.getID()
                             return 'tt' + ID
@@ -120,7 +119,8 @@ def main(*titles, directors=None, data: dict = None):
 
     # Starting
     ia = IMDb()
-    print(f'[bright_black]\[find_imdb] Searching imdb id (titles={" ".join(titles)} | directors={" ".join(directors)} ...')
+    print(f'[bright_black]\[find_imdb] Searching imdb id...')
+    dprint(f'[bright_black]\[find_imdb] titles={" ".join(titles)} | directors={" ".join(directors)}')
 
     dprint('parsed directors=', directors)
     dprint('cleaned parsed directors=', directors)
@@ -158,7 +158,6 @@ def main(*titles, directors=None, data: dict = None):
     print(f'[bright_black]\[find_imdb] Not found: {" ".join(titles)}')
 
 
-# def finder(title_eng=None, original_title=None, directors=None, data=None, debug=False):
 def finder(*titles, directors=None, data=None, debug=False):
     global DEBUG
     DEBUG = debug
