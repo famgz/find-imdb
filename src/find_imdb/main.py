@@ -163,13 +163,10 @@ def finder(*titles, directors=None, data=None, debug=False):
     global DEBUG
     DEBUG = debug
 
-    new_imdb_id = main(*titles, directors=directors, data=data)
-    return new_imdb_id
-
-    # for _ in range(TRIES):
-    #     try:
-    #         new_imdb_id = main(*titles, directors=directors, data=data)
-    #         return new_imdb_id
-    #     except Exception as e:
-    #         print(f'[find_imdb] Got Error:[yellow] {e} ')
-    # return None
+    for _ in range(TRIES):
+        try:
+            new_imdb_id = main(*titles, directors=directors, data=data)
+            return new_imdb_id
+        except Exception as e:
+            print(f'[find_imdb] Got Error:[yellow] {e} ')
+    return None
