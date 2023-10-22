@@ -13,7 +13,7 @@ Usage
 ```python
 from find_imdb import finder
 
-imdbID = finder([director1, director2, ...], title1, title2)
+imdbID = finder(title1, title2, ..., directors='director_name')
 ```
 - To perform a direct search on your terminal:
 ```
