@@ -1,19 +1,35 @@
 # Execute with
 # $ python -m find_imdb
 
-import os
+from famgz_utils import print, input
+from pathlib import Path
 import sys
 
 if __package__ is None:
-    path = os.path.realpath(os.path.abspath(__file__))
-    sys.path.insert(0, os.path.dirname(os.path.dirname(path)))
+    sys.path.insert(0, Path(__file__).resolve().parent.parent)
 
 if __name__ == "__main__":
-    usage = ""
+    from .main import finder
 
-    # TODO implement args version to function as module receiving user input
-    # args = sys.argv
-    # print(args)
-    # while len(args) < 2:
-    #     print("Invalid parameters")
-    # main.main(*args[1:])
+    titles = []
+    directors = []
+
+    for desc, stack in (('title', titles), ('director', directors)):
+        while True:
+            res = input(f'\nInsert a [bright_cyan]{desc} [white](or empty to proceed):\n>').strip()
+
+            if not res:
+                if stack:
+                    print(f'{desc}s: [bright_blue]{", ".join(titles)}')
+                    break
+                print(f'[yellow]You must give at least one {desc}')
+                continue
+
+            stack.append(res)
+
+    imdb_id = finder(*titles, directors=directors)
+    print()
+    if imdb_id:
+        print(f'IMDb Id: [bright_green]{imdb_id}')
+    else:
+        print('Not found  :(')

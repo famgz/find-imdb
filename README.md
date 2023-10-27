@@ -21,3 +21,6 @@ python -m find_imdb
 >>> Insert directors:
 >>> Insert titles:
 ```
+---
+
+![usage](https://raw.githubusercontent.com/famgz/find-imdb/main/screenshots/usage.png)
